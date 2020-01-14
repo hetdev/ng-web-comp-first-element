@@ -12,16 +12,17 @@ import {createCustomElement} from '@angular/elements';
     BrowserModule
   ],
   providers: [],
-  // bootstrap: [AppComponent],
+  bootstrap: [AppComponent],
   entryComponents: [AppComponent]
 })
 export class AppModule implements DoBootstrap {
   constructor(private injector: Injector) {
+    const el = createCustomElement(AppComponent, { injector: this.injector });
+    customElements.define('ng-web-comp-first-element', el);
   }
 
   ngDoBootstrap() {
-    const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('ng-web-comp-first-element', el);
+
   }
 }
 
